@@ -8,6 +8,7 @@
 const { Collection } = require("discord.js");
 const client = require("../..");
 
+const categories = new Collection();
 const cooldowns = new Collection();
 const escReg = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
@@ -26,12 +27,19 @@ module.exports = {
 		const commandName = args.shift().toLowerCase();
 
 		const command = client.commands.get(commandName)
-            || client.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(commandName));
+		|| client.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(commandName));
 
 		if (!command) return;
 
 		if (!cooldowns.has(command.name)) {
 			cooldowns.set(command.name, new Collection());
+		}
+
+		const category = categories.get(command.category);
+		if (category) {
+			category.set(command.name, command);
+		} else {
+			categories.set(command.category, new Collection().set(command.name, command));
 		}
 
 		const now = Date.now();
