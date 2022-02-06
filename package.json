@@ -1,0 +1,35 @@
+{
+  "name": "blckdot",
+  "version": "1.0.0",
+  "description": "Discord Bot Built With JavaScript Inside NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ipincamp/blckdot.git"
+  },
+  "keywords": [
+    "nodejs",
+    "discordbot",
+    "djs",
+    "javascript",
+    "js"
+  ],
+  "author": "ipincamp",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ipincamp/blckdot/issues"
+  },
+  "homepage": "https://github.com/ipincamp/blckdot#readme",
+  "devDependencies": {
+    "eslint": "^8.8.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "discord.js": "^13.6.0"
+  }
+}
