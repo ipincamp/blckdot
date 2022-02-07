@@ -1,4 +1,5 @@
 {
-    "token": "NEVER_SHARE",
-    "prefix": "p"
+    "dev": ["ID", "ID"],
+    "prefix": "p",
+    "token": "NEVER_SHARE"
 }

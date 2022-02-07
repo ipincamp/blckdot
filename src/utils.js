@@ -13,5 +13,6 @@ try {
 	config = null;
 }
 
+exports.dev = config ? config.dev : process.env.DEV;
+exports.prefix = config ? config.prefix : process.env.PREFIX || "p";
 exports.token = config ? config.token : process.env.TOKEN;
-exports.prefix = config ? config.prefix : process.env.PREFIX;
