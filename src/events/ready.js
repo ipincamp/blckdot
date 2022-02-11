@@ -5,18 +5,13 @@
  * @author ipincamp <support@nur-arifin.my.id>
  */
 
-const { Client } = require("discord.js");
 const fs = require("fs");
 
-const { prefix } = require("../utils");
+const { prefix } = require("../utils/utils");
 
 module.exports = {
 	name: "ready",
 	once: true,
-	/**
-     *
-	 * @param {Client} client
-     */
 	execute(client) {
 		console.info(`${client.user.tag} ready!`);
 
@@ -35,18 +30,27 @@ module.exports = {
 		/**
  		* Commands Handler
  		*/
-		const commandFiles = fs.readdirSync("./src/commands").filter((file) => file.endsWith(".js"));
+		fs.readdir("./src/commands/", (e, f) => {
+			if (e) {
+				console.error(e);
+			} else {
+				console.info(`Register ${f.length} categories!`);
+				f.forEach((g) => {
+					fs.readdir(`./src/commands/${g}`, (h, i) => {
+						console.info(`> ${i.length} commands from ${g}`);
+						if (h) {
+							console.error(h);
+						} else {
+							i.forEach((j) => {
+								if (!j.endsWith(".js")) return;
+								let command = require(`../commands/${g}/${j}`);
 
-		for (const file of commandFiles) {
-			const command = require(`../commands/${file}`);
-
-			client.commands.set(command.name, command);
-		}
-		/**
-		 * To Do:
-		 * 1. Updater
-		 * 2. Bug fixer
-		 *
-		 */
+								client.commands.set(command.name, command);
+							});
+						}
+					});
+				});
+			}
+		});
 	},
 };
