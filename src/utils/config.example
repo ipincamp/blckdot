@@ -1,5 +1,7 @@
 {
     "dev": ["ID", "ID"],
     "prefix": "p",
+    "pruning": false,
+    "stayTime": 30,
     "token": "NEVER_SHARE"
 }
