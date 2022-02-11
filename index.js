@@ -9,6 +9,7 @@
  * Import Modules
  */
 const { Client, Collection } = require("discord.js");
+const express = require("express");
 const fs = require("fs");
 const { prefix, token } = require("./src/utils/utils");
 
@@ -40,3 +41,10 @@ for (const file of eventFiles) {
 		client.on(event.name, (...args) => event.execute(...args));
 	}
 }
+
+/**
+ * For Heroku
+ */
+const app = express();
+app.listen(process.env.PORT);
+app.get("/", (req, res) => res.sendStatus(200));
