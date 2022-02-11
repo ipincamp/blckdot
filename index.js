@@ -10,7 +10,7 @@
  */
 const { Client, Collection } = require("discord.js");
 const fs = require("fs");
-const { prefix, token } = require("./src/utils");
+const { prefix, token } = require("./src/utils/utils");
 
 // Create new client instance
 const client = new Client({
