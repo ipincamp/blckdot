@@ -9,11 +9,13 @@ module.exports = {
 	parserOptions: { ecmaVersion: "latest" },
 	rules: {
 		"consistent-return": "off",
+		eqeqeq: "off",
 		"global-require": "off",
 		"import/no-dynamic-require": "off",
 		indent: ["error", "tab"],
 		"linebreak-style": ["error", "windows"],
 		"no-console": "off",
+		"no-restricted-globals": "off",
 		"no-restricted-syntax": "off",
 		"no-tabs": "off",
 		"no-unused-vars": "warn",
