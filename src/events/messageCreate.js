@@ -8,7 +8,6 @@
 const { Collection } = require("discord.js");
 const client = require("../..");
 
-const categories = new Collection();
 const cooldowns = new Collection();
 const escReg = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
@@ -35,13 +34,6 @@ module.exports = {
 			cooldowns.set(command.name, new Collection());
 		}
 
-		const category = categories.get(command.category);
-		if (category) {
-			category.set(command.name, command);
-		} else {
-			categories.set(command.category, new Collection().set(command.name, command));
-		}
-
 		const now = Date.now();
 		const timestamps = cooldowns.get(command.name);
 		const cooldownAmount = (command.cooldown || 1) * 1000;
@@ -51,7 +43,7 @@ module.exports = {
 
 			if (now < expirationTime) {
 				const timeLeft = (expirationTime - now) / 1000;
-				return message.reply(`please wait ${timeLeft.toFixed(1)} more seconds before reusing the \`${command.name}\` command.`);
+				return message.reply(`Please wait ${timeLeft.toFixed(1)} more seconds before reusing the \`${command.name}\` command.`);
 			}
 		}
 
