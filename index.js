@@ -7,7 +7,7 @@
 
 const { Client, Collection } = require("discord.js");
 const express = require("express");
-const { prefix, token } = require("./src/utils/utils");
+const { prefix, token } = require("./src/utils/config");
 
 const app = express();
 
@@ -28,6 +28,5 @@ client.login(token);
 client.commands = new Collection();
 client.events = new Collection();
 client.prefix = prefix;
-client.queue = new Map();
 
 require("./src/utils/handlers")(client);
