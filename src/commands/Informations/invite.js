@@ -5,13 +5,26 @@
  * @author ipincamp <support@nur-arifin.my.id>
  */
 
+const client = require("../../..");
+
 module.exports = {
 	name: "invite",
 	cooldown: 10,
 	description: "Send bot invite link",
 	execute(message) {
-		return message.member.send(
-			`https://discord.com/api/oauth2/authorize?client_id=${message.client.user.id}&permissions=305622086&scope=bot%20applications.commands`,
-		).catch((err) => console.error(err));
+		const link = client.generateInvite({
+			scopes: ["bot", "applications.commands"],
+			permissions: [
+				"ADD_REACTIONS",
+				"CONNECT",
+				"EMBED_LINKS",
+				"MANAGE_MESSAGES",
+				"SPEAK",
+				"STREAM",
+				"SEND_MESSAGES",
+				"VIEW_CHANNEL",
+			],
+		});
+		return message.member.send(link).catch((err) => console.error(err));
 	},
 };
