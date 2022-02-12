@@ -9,6 +9,7 @@ module.exports = {
 	name: "name",
 	cooldown: 10,
 	description: "description",
+	voiceChannel: false,
 	execute(param) {
 		// Code
 	},
