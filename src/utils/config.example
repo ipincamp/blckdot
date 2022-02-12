@@ -1,7 +1,10 @@
 {
-    "dev": ["ID", "ID"],
-    "prefix": "p",
+    "defaultVolume": 100,
+    "dev": ["DEV_ID", "OWNER_ID"],
+    "playlistSize": 10,
+    "prefix": "YOUR_PREFIX",
     "pruning": false,
     "stayTime": 30,
-    "token": "NEVER_SHARE"
+    "token": "CLIENT_TOKEN",
+    "youtubeAPI": "YOUTUBE_API"
 }
