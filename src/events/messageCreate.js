@@ -29,6 +29,11 @@ module.exports = {
 		|| client.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(commandName));
 
 		if (!command) return;
+		if (command && command.voiceChannel) {
+			if (!message.member.voice.channel) return message.channel.send(`<@${message.author}> You're not in a voice channel... try again ?`);
+
+			if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) return message.channel.send(`<@${message.author}> You are not in the same voice channel... try again ?`);
+		}
 
 		if (!cooldowns.has(command.name)) {
 			cooldowns.set(command.name, new Collection());
