@@ -7,6 +7,7 @@
 
 const fs = require("fs");
 const { join } = require("path");
+const { Player } = require("discord-player");
 
 module.exports = (client) => {
 	const eventFiles = fs.readdirSync(join(__dirname, "../events")).filter((file) => file.endsWith(".js"));
@@ -21,6 +22,24 @@ module.exports = (client) => {
 		}
 	}
 	console.info(`Registering ${eventFiles.length} events!`);
+
+	const player = new Player(client, {
+		autoRegisterExtractor: true,
+		ytdlOptions: {
+			highWaterMark: 1 << 25,
+			quality: "highestaudio",
+		},
+	});
+	module.exports = player;
+
+	const playerFiles = fs.readdirSync(join(__dirname, "../events/player")).filter((file) => file.endsWith(".js"));
+
+	for (const file of playerFiles) {
+		const players = require(join(__dirname, "../events/player", `${file}`));
+
+		player.on(players.name, (...args) => players.execute(...args));
+	}
+	console.info(`Registering ${playerFiles.length} music events!`);
 
 	fs.readdir("./src/commands/", (e, f) => {
 		if (e) {
