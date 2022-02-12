@@ -4,6 +4,7 @@
  * @version v1.0.0
  * @author ipincamp <support@nur-arifin.my.id>
  */
+
 module.exports = {
 	name: "ready",
 	once: true,
