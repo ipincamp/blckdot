@@ -8,7 +8,7 @@
 const { MessageEmbed } = require("discord.js");
 const client = require("../../..");
 
-const { prefix } = require("../../utils/utils");
+const { prefix } = require("../../utils/config");
 
 module.exports = {
 	name: "help",

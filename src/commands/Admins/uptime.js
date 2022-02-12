@@ -5,7 +5,7 @@
  * @author ipincamp <support@nur-arifin.my.id>
  */
 
-const { dev } = require("../../utils/utils");
+const { dev } = require("../../utils/config");
 
 module.exports = {
 	name: "uptime",
