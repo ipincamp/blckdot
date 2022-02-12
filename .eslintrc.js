@@ -10,6 +10,7 @@ module.exports = {
 	rules: {
 		"block-scoped-var": "warn",
 		"consistent-return": "off",
+		curly: "warn",
 		eqeqeq: "off",
 		"global-require": "off",
 		"import/no-dynamic-require": "off",
@@ -23,6 +24,7 @@ module.exports = {
 		"no-restricted-syntax": "off",
 		"no-tabs": "off",
 		"no-undef": "warn",
+		"no-useless-escape": "warn",
 		"no-unused-expressions": "warn",
 		"no-unused-vars": "warn",
 		"no-use-before-define": "warn",
